@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_blue"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <!-- 打开相机镜头 (FPV) -->
+    <dji.ux.widget.FPVWidget
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--切换聚焦模式、仪表模式（绿、黄）图标-->
+    <dji.ux.widget.FPVOverlayWidget
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--显示交互状态栏（横排工具栏）-->
+    <dji.ux.workflow.CompassCalibratingWorkFlow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- 显示上方状态栏 -->
+    <LinearLayout
+        android:id="@+id/signal"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/dark_gray"
+        android:orientation="horizontal">
+
+        <!--显示飞机起飞状态图标-->
+        <dji.ux.widget.PreFlightStatusWidget
+            android:layout_width="238dp"
+            android:layout_height="25dp"/>
+
+        <!--显示飞行模式图标-->
+        <dji.ux.widget.FlightModeWidget
+            android:layout_width="103dp"
+            android:layout_height="22dp"/>
+
+        <!--显示GPS信号强度图标-->
+        <dji.ux.widget.GPSSignalWidget
+            android:layout_width="44dp"
+            android:layout_height="22dp"/>
+
+        <!--显示视觉定位小图标-->
+        <dji.ux.widget.VisionWidget
+            android:layout_width="22dp"
+            android:layout_height="22dp"/>
+
+        <!--显示视觉定位小图标-->
+        <dji.ux.widget.RemoteControlSignalWidget
+            android:layout_width="38dp"
+            android:layout_height="22dp"/>
+
+        <!--显示视频信号强度小图标-->
+        <dji.ux.widget.VideoSignalWidget
+            android:layout_width="38dp"
+            android:layout_height="22dp"/>
+
+        <!--显示 WIFI信号强度小图标-->
+        <dji.ux.widget.WiFiSignalWidget
+            android:layout_width="22dp"
+            android:layout_height="20dp"/>
+
+        <!--显示电池状态图标-->
+        <dji.ux.widget.BatteryWidget
+            android:layout_width="96dp"
+            android:layout_height="22dp"
+            custom:excludeView="singleVoltage"/>
+
+        <!--显示与飞机连接状态图标-->
+        <dji.ux.widget.ConnectionWidget
+            android:layout_marginTop="3dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/dark_gray"
+        android:orientation="horizontal">
+
+        <!--显示AE（自动曝光）小图标-->
+        <dji.ux.widget.AutoExposureLockWidget
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <!--切换曝光与聚焦-->
+        <dji.ux.widget.FocusExposureSwitchWidget
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <!--切换AF/MF 图标-->
+        <dji.ux.widget.FocusModeWidget
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <!--显示相机当前ISO设置 图标-->
+        <dji.ux.widget.config.CameraConfigISOAndEIWidget
+            android:layout_width="60dp"
+            android:layout_height="30dp"/>
+
+        <!--显示相机SHUTTER（快门速度） 图标-->
+        <dji.ux.widget.config.CameraConfigShutterWidget
+            android:layout_width="60dp"
+            android:layout_height="30dp"/>
+
+        <!--显示相机光圈（F） 图标-->
+        <dji.ux.widget.config.CameraConfigApertureWidget
+            android:layout_width="60dp"
+            android:layout_height="30dp"/>
+
+        <!--显示相机曝光值（EV）图标-->
+        <dji.ux.widget.config.CameraConfigEVWidget
+            android:layout_width="60dp"
+            android:layout_height="30dp"/>
+
+        <!--显示相机白平衡值（WB） 图标-->
+        <dji.ux.widget.config.CameraConfigWBWidget
+            android:layout_width="70dp"
+            android:layout_height="30dp"/>
+
+        <!--显示相机分辨率/剩余记录时间 图标-->
+        <dji.ux.widget.config.CameraConfigStorageWidget
+            android:layout_width="130dp"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+
+    <!--允许手动设置焦点距离-->
+    <dji.ux.widget.ManualFocusWidget
+        android:layout_below="@id/camera"
+        android:layout_alignLeft="@id/camera"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="42dp"
+        android:layout_height="218dp"
+        tools:ignore="RtlHardcoded"/>
+
+    <!--状态栏下方的线-->
+    <!--显示剩余飞行时间与飞机电量百分比-->
+    <dji.ux.widget.RemainingFlightTimeWidget
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:background="@color/transparent"
+        android:layout_height="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <!--显示下方复合组件-->
+        <dji.ux.widget.dashboard.DashboardWidget
+            android:id="@+id/Compass"
+            android:layout_width="405dp"
+            android:layout_height="91dp"
+            android:layout_marginRight="12dp"
+            tools:ignore="RtlHardcoded"/>
+
+    </LinearLayout>
+
+
+    <!--左侧 降落 返航 按钮 -->
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical">
+
+        <!--左侧起飞/着陆 图标-->
+        <dji.ux.widget.TakeOffWidget
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="12dp"/>
+
+        <!--左侧返航 图标-->
+        <dji.ux.widget.ReturnHomeWidget
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+
+
+    <!--右侧相机复合小部件-->
+    <dji.ux.widget.controls.CameraControlsWidget
+        android:id="@+id/CameraCapturePanel"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/camera"
+        android:layout_width="50dp"
+        android:layout_height="213dp"
+        tools:ignore="RtlHardcoded"/>
+
+
+    <!--右侧相机设置菜单-->
+    <dji.ux.panel.CameraSettingExposurePanel
+        android:layout_width="180dp"
+        android:layout_below="@id/camera"
+        android:layout_toLeftOf="@+id/CameraCapturePanel"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:layout_height="263dp"
+        android:visibility="invisible"
+        tools:ignore="RtlHardcoded"/>
+
+    <!--显示拍照/录像/通用设置菜单-->
+    <dji.ux.panel.CameraSettingAdvancedPanel
+        android:layout_width="180dp"
+        android:layout_height="263dp"
+        android:layout_below="@id/camera"
+        android:layout_toLeftOf="@+id/CameraCapturePanel"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:visibility="invisible"
+        tools:ignore="RtlHardcoded"/>
+
+    <!-- 左上角点击弹出状态列表 -->
+    <dji.ux.panel.PreFlightCheckListPanel
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signal"
+        custom:excludeItem="ESCStatus"
+        android:visibility="gone"/>
+
+</RelativeLayout>
